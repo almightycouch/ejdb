@@ -5,14 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Building from sources &mdash; EJDB</title>
+    <title>EJDB2 Roadmap &mdash; EJDB</title>
     
 <link rel="stylesheet" href="../../_static/theme.css" type="text/css"/>
 <link rel="stylesheet" href="../../_static/pygments.css" type="text/css"/>
     <link rel="top" title="EJDB" href="../../index.html"/>
-    <link rel="up" title="Installation" href="index.html"/>
-    <link rel="next" title="Command line interface" href="../cli.html"/>
-    <link rel="prev" title="EJDB Binaries" href="archives.html"/> 
+    <link rel="next" title="Mongodb compatibility" href="../mongodb.html"/>
+    <link rel="prev" title="Known limitations" href="../limitations.html"/> 
 </head>
 <body role="document">
 <div id="toc-modal" class="modal modal-fixed-footer">
@@ -21,11 +20,8 @@
 
         <div class="page-content">
             <ul>
-<li><a class="reference internal" href="#">Building from sources</a><ul>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#make">Make</a></li>
-<li><a class="reference internal" href="#cmake-basic-build-d-options">CMake basic build(-D) options</a></li>
-<li><a class="reference internal" href="#building-native-windows-libs">Building native Windows libs</a></li>
+<li><a class="reference internal" href="#">EJDB2 Roadmap</a><ul>
+<li><a class="reference internal" href="#progress">Progress</a></li>
 </ul>
 </li>
 </ul>
@@ -89,12 +85,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../snippets.html#other-third-party-bindings">Other third-party bindings</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ubuntu.html">Ubuntu/Debian</a></li>
-<li class="toctree-l2"><a class="reference internal" href="osx.html">OSX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.html">Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="archives.html">EJDB binaries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Building from sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install/ubuntu.html">Ubuntu/Debian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/osx.html">OSX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/windows.html">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/archives.html">EJDB binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/building.html">Building from sources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cli.html">Command line interface</a><ul>
@@ -148,8 +144,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../limitations.html#misc">Misc</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ejdb2/index.html">EJDB2 Roadmap</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ejdb2/index.html#progress">Progress</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">EJDB2 Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#progress">Progress</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../mongodb.html">Mongodb compatibility</a><ul>
@@ -175,129 +171,34 @@
                    class="waves-effect waves-light btn"><i class="mdi-action-home"></i></a>
                 <a href="#toc-modal"
                    title="EJDB"
-                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a>
-                <a class="dropdown-button btn" href="#"
-                   data-beloworigin="true"
-                   data-activates="relnav-parents-1"><i class="mts-up"></i></a>
-                <ul id="relnav-parents-1"
-                    class="dropdown-content">
-                    <li><a href="index.html">Installation</a></li>
-                </ul> 
-                <a href="archives.html"
-                   title="EJDB Binaries"
+                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a> 
+                <a href="../limitations.html"
+                   title="Known limitations"
                    class="waves-effect waves-light btn">
                     <i class="mts-left"></i>
                 </a>
-                <a href="../cli.html"
-                   title="Command line interface"
+                <a href="../mongodb.html"
+                   title="Mongodb compatibility"
                    class="waves-effect waves-light btn">
                     <i class="mts-right"></i>
                 </a>
             </div>
             <div class="page-content">
                 
-  <div class="section" id="building-from-sources">
-<span id="building"></span><h1>Building from sources<a class="headerlink" href="#building-from-sources" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="ejdb2-roadmap">
+<span id="ejdb2"></span><h1>EJDB2 Roadmap<a class="headerlink" href="#ejdb2-roadmap" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>git</li>
-<li>GNU make</li>
-<li>cmake &gt;= <cite>2.8.12</cite></li>
-<li>gcc &gt;= <cite>4.7</cite> or clang &gt;= <cite>3.4</cite> C compiler</li>
-<li>zlib-dev</li>
+<li>Get rid of the Tokyocabinet. TC is an awesome software but nowadays it has many hard to fix <a class="reference internal" href="../limitations.html#tc-limitations"><span>limitations</span></a>.</li>
+<li>Use highly concurrent <cite>B+Tree</cite> index structure with support of <cite>MVCC</cite>. I have thoughts how to implement it with some
+ideas from <a class="reference external" href="http://symas.com/mdb/">LMDB</a> copy-on-write btree and <cite>B-link</cite> trees.</li>
+<li>Review usage of <cite>BSON</cite> data format as internal representation of documents. Considering more compact formats: <a class="reference external" href="http://msgpack.org/">MessagePack</a>,
+<a class="reference external" href="http://wiki.fasterxml.com/SmileFormatSpec">Smile</a>, <a class="reference external" href="http://ubjson.org/">UBJSON</a>, <a class="reference external" href="http://cbor.io/">CBOR</a></li>
 </ul>
-</div>
-<div class="section" id="make">
-<h2>Make<a class="headerlink" href="#make" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh"><div class="highlight"><pre>git clone https://github.com/Softmotions/ejdb.git
-<span class="nb">cd </span>ejdb
-mkdir build
-<span class="nb">cd </span>build
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ../
-make
-make install
-<span class="c"># Or you can create tgz package:</span>
-make package
-</pre></div>
-</div>
-</div>
-<div class="section" id="cmake-basic-build-d-options">
-<h2>CMake basic build(-D) options<a class="headerlink" href="#cmake-basic-build-d-options" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh"><div class="highlight"><pre>// Build ejdb sample projects
-BUILD_SAMPLES:BOOL<span class="o">=</span>ON
-
-// Build shared libraries
-BUILD_SHARED_LIBS:BOOL<span class="o">=</span>ON
-
-// Build <span class="nb">test </span>cases
-BUILD_TESTS:BOOL<span class="o">=</span>OFF
-
-// Choose the <span class="nb">type </span>of build, options are:
-// - None<span class="o">(</span>CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used<span class="o">)</span>
-// - Debug
-// - Release
-// - RelWithDebInfo.
-CMAKE_BUILD_TYPE:STRING<span class="o">=</span>Release
-
-// Install path prefix,
-// prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH<span class="o">=</span>/usr/local
-
-// Enable PPA package build
-ENABLE_PPA:BOOL<span class="o">=</span>OFF
-
-// Build .deb instalation packages
-PACKAGE_DEB:BOOL<span class="o">=</span>OFF
-
-// Build .tgz package archive
-PACKAGE_TGZ:BOOL<span class="o">=</span>ON
-
-// Build .zip package archive
-PACKAGE_ZIP:BOOL<span class="o">=</span>OFF
-
-// Upload debian packages to the launchpad ppa repository
-UPLOAD_PPA:BOOL<span class="o">=</span>OFF
-</pre></div>
-</div>
-</div>
-<div class="section" id="building-native-windows-libs">
-<span id="building-windows"></span><h2>Building native Windows libs<a class="headerlink" href="#building-native-windows-libs" title="Permalink to this headline">¶</a></h2>
-<p>EJDB binaries for <cite>Windows</cite> need to be build on <cite>Linux</cite>
-using cross-compilation within the MXE cross build environment.
-First of all you need to checkout the <a class="reference external" href="http://mxe.cc">MXE cross build environment</a></p>
-<div class="highlight-sh"><div class="highlight"><pre>git clone https://github.com/mxe/mxe.git
-</pre></div>
-</div>
-<p>Then create/edit MXE settings file:</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> &lt;mxe checkout dir&gt;
-nano ./settings.mk
-</pre></div>
-</div>
-<p>Save the following content in  <cite>settings.mk</cite>:</p>
-<div class="highlight-sh"><div class="highlight"><pre>JOBS :<span class="o">=</span> 1
-MXE_TARGETS :<span class="o">=</span> x86_64-w64-mingw32.static i686-w64-mingw32.static
-LOCAL_PKG_LIST :<span class="o">=</span> winpthreads pcre zlib lzo bzip2 cunit
-.DEFAULT <span class="nb">local</span>-pkg-list:
-<span class="nb">local</span>-pkg-list: <span class="k">$(</span>LOCAL_PKG_LIST<span class="k">)</span>
-</pre></div>
-</div>
-<p>Build MXE packages:</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> &lt;mxe checkout dir&gt;
-make
-</pre></div>
-</div>
-<p>Finally build <cite>libejdb</cite> windows binaries:</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nb">export </span><span class="nv">MXE_HOME</span><span class="o">=</span>&lt;mxe checkout dir&gt;
-<span class="nb">export </span><span class="nv">MXE_CFG</span><span class="o">=</span>&lt;x86_64-w64-mingw32.static<span class="p">|</span>i686-w64-mingw32.static&gt;
-
-<span class="nb">cd</span> &lt;ejdb checkout dir&gt;
-mkdir build-win32
-<span class="nb">cd </span>build-wind32
-cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../win64-tc.cmake ..
-make package
-</pre></div>
-</div>
+<div class="section" id="progress">
+<h2>Progress<a class="headerlink" href="#progress" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Implemented the <a class="reference external" href="https://github.com/Softmotions/iowow">file IO library and free space management engine (IOWOW)</a></li>
+</ul>
 </div>
 </div>
 
@@ -313,21 +214,14 @@ make package
                    class="waves-effect waves-light btn"><i class="mdi-action-home"></i></a>
                 <a href="#toc-modal"
                    title="EJDB"
-                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a>
-                <a class="dropdown-button btn" href="#"
-                   data-beloworigin="true"
-                   data-activates="relnav-parents-2"><i class="mts-up"></i></a>
-                <ul id="relnav-parents-2"
-                    class="dropdown-content">
-                    <li><a href="index.html">Installation</a></li>
-                </ul> 
-                <a href="archives.html"
-                   title="EJDB Binaries"
+                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a> 
+                <a href="../limitations.html"
+                   title="Known limitations"
                    class="waves-effect waves-light btn">
                     <i class="mts-left"></i>
                 </a>
-                <a href="../cli.html"
-                   title="Command line interface"
+                <a href="../mongodb.html"
+                   title="Mongodb compatibility"
                    class="waves-effect waves-light btn">
                     <i class="mts-right"></i>
                 </a>

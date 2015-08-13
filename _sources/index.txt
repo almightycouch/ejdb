@@ -57,4 +57,5 @@ Documentation
     Language bindings <doc/bindings/index>
     doc/iexp/index
     doc/limitations
+    doc/ejdb2/index
     doc/mongodb

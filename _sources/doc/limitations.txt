@@ -3,6 +3,8 @@
 Known limitations
 =================
 
+.. _tc_limitations:
+
 Tokyo Cabinet issues
 --------------------
 
