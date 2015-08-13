@@ -266,6 +266,16 @@ UPLOAD_PPA:BOOL<span class="o">=</span>OFF
 <p>EJDB binaries for <cite>Windows</cite> need to be build on <cite>Linux</cite>
 using cross-compilation within the MXE cross build environment.
 First of all you need to checkout the <a class="reference external" href="http://mxe.cc">MXE cross build environment</a></p>
+<p>Install the required packages:</p>
+<div class="highlight-sh"><div class="highlight"><pre>sudo apt-get install   <span class="se">\</span>
+autoconf automake autopoint bash bison bzip2 cmake flex  <span class="se">\</span>
+gettext git g++ gperf intltool libffi-dev libtool   <span class="se">\</span>
+libltdl-dev libssl-dev libxml-parser-perl make openssl   <span class="se">\</span>
+p7zip-full patch perl pkg-config python ruby scons sed   <span class="se">\</span>
+unzip wget xz-utils <span class="se">\</span>
+wine
+</pre></div>
+</div>
 <div class="highlight-sh"><div class="highlight"><pre>git clone https://github.com/mxe/mxe.git
 </pre></div>
 </div>
