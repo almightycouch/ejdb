@@ -5,8 +5,7 @@
 MSVC 2015 Sample project
 ========================
 
-
-`Here is the MSVC 2015 sample project <http://softmotions.com/ejdb/samples/msvc2015-x64-ejdb.zip>`_
+`Download the MSVC 2015 sample project <http://softmotions.com/ejdb/samples/msvc2015-x64-ejdb.zip>`_
 
 New MSVC project notes
 ----------------------

@@ -8,9 +8,10 @@ Windows
 * |ejdb_w64_dl|_.
 * |ejdb_w32_dl|_.
 
+.. toctree::
+    :maxdepth: 1
 
-:ref:`MSVC 2015 sample project <msvc_sample>`.
-
+    msvc
 
 .. note::
 
