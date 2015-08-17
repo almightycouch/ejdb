@@ -13,7 +13,7 @@ New MSVC project notes
 The simplest way to start with EJDB and MSVC:
 
 * :ref:`Download and extract the EJDB windows archive <windows>`
-* Add `<ejdb path>/bin` on to the user's `%PATH%`
+* Add `<ejdb path>/bin` into the user's `%PATH%`
 * Start MSVC 2015 then create new `Win32 Console Application`
 * Configure the project's properties
 
