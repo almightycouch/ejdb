@@ -3,6 +3,7 @@ Installation
 
 
 .. toctree::
+    :maxdepth: 1
 
     ubuntu
     OSX <osx>
