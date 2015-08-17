@@ -1,3 +1,5 @@
+.. _windows:
+
 Windows
 =======
 
@@ -5,6 +7,10 @@ Windows
 
 * |ejdb_w64_dl|_.
 * |ejdb_w32_dl|_.
+
+
+:ref:`MSVC 2015 sample project <msvc_sample>`.
+
 
 .. note::
 

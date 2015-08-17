@@ -5,14 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Windows &mdash; EJDB</title>
+    <title>MSVC 2015 Sample project &mdash; EJDB</title>
     
 <link rel="stylesheet" href="../../_static/theme.css" type="text/css"/>
 <link rel="stylesheet" href="../../_static/pygments.css" type="text/css"/>
-    <link rel="top" title="EJDB" href="../../index.html"/>
-    <link rel="up" title="Installation" href="index.html"/>
-    <link rel="next" title="EJDB Binaries" href="archives.html"/>
-    <link rel="prev" title="OSX Installation" href="osx.html"/> 
+    <link rel="top" title="EJDB" href="../../index.html"/> 
 </head>
 <body role="document">
 <div id="toc-modal" class="modal modal-fixed-footer">
@@ -21,7 +18,10 @@
 
         <div class="page-content">
             <ul>
-<li><a class="reference internal" href="#">Windows</a></li>
+<li><a class="reference internal" href="#">MSVC 2015 Sample project</a><ul>
+<li><a class="reference internal" href="#new-msvc-project-notes">New MSVC project notes</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -64,7 +64,7 @@
         <input type="hidden" name="area" value="default" />
     </form>
 </div><div id="sidetoc">
-    <ul class="current">
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../news.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../news.html#ejdb-v1-2-10-released">EJDB v1.2.10 released</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../news.html#ejdb-v1-2-9-released">EJDB v1.2.9 released</a></li>
@@ -83,10 +83,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../snippets.html#other-third-party-bindings">Other third-party bindings</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ubuntu.html">Ubuntu/Debian</a></li>
 <li class="toctree-l2"><a class="reference internal" href="osx.html">OSX</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="archives.html">EJDB binaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building.html">Building from sources</a></li>
 </ul>
@@ -167,40 +167,30 @@
                 <a href="../../index.html"
                    title="EJDB"
                    class="waves-effect waves-light btn"><i class="mdi-action-home"></i></a>
-                <a class="dropdown-button btn" href="#"
-                   data-beloworigin="true"
-                   data-activates="relnav-parents-1"><i class="mts-up"></i></a>
-                <ul id="relnav-parents-1"
-                    class="dropdown-content">
-                    <li><a href="index.html">Installation</a></li>
-                </ul> 
-                <a href="osx.html"
-                   title="OSX Installation"
-                   class="waves-effect waves-light btn">
-                    <i class="mts-left"></i>
-                </a>
-                <a href="archives.html"
-                   title="EJDB Binaries"
-                   class="waves-effect waves-light btn">
-                    <i class="mts-right"></i>
-                </a>
+                <a href="#toc-modal"
+                   title="EJDB"
+                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a> 
             </div>
             <div class="page-content">
                 
-  <div class="section" id="windows">
-<span id="id1"></span><h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
-<p><strong>The latest precompiled binary distributions for Windows:</strong></p>
+  <div class="section" id="msvc-2015-sample-project">
+<span id="msvc-sample"></span><h1>MSVC 2015 Sample project<a class="headerlink" href="#msvc-2015-sample-project" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://softmotions.com/ejdb/samples/msvc2015-x64-ejdb.zip">Here is the MSVC 2015 sample project</a></p>
+<div class="section" id="new-msvc-project-notes">
+<h2>New MSVC project notes<a class="headerlink" href="#new-msvc-project-notes" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to start with EJDB and MSVC:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://softmotions.com/ejdb/archives/ejdb-1.2.10-RelWithDebInfo-Windows-x86_64.tar.gz">EJDB for Windows x86_64</a>.</li>
-<li><a class="reference external" href="http://softmotions.com/ejdb/archives/ejdb-1.2.10-RelWithDebInfo-Windows-x86.zip">EJDB for Windows x86</a>.</li>
+<li><a class="reference internal" href="windows.html#windows"><span>Download and extract the EJDB windows archive</span></a></li>
+<li>Add <cite>&lt;ejdb path&gt;/bin</cite> on to the user&#8217;s <cite>%PATH%</cite></li>
+<li>Start MSVC 2015 then create new <cite>Win32 Console Application</cite></li>
+<li>Go to project properties<ul>
+<li>Open properties dialog Click <cite>Configuration manager</cite> and choosee proper type of project platform (x64 or x32)</li>
+<li>Open C/C++ tab / General: Add <cite>&lt;ejdb path&gt;/include</cite> to the <cite>Additional Include Directories</cite></li>
+<li>Open Linker tab / General: Add <cite>&lt;ejdb path&gt;/lib</cite> to the <cite>Additional Library Directories</cite></li>
+<li>Open Linker tab / Input: Add <cite>libejdb.lib</cite> to the <cite>Additional dependencies</cite></li>
 </ul>
-<p><a class="reference internal" href="msvc.html#msvc-sample"><span>MSVC 2015 sample project</span></a>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<div class="last line-block">
-<div class="line">EJDB binaries for <cite>Windows</cite> should be build on <cite>Linux</cite> using cross-compilation within the <a class="reference external" href="http://mxe.cc">MXE cross build environment</a>.</div>
-<div class="line">See: <a class="reference internal" href="building.html#building-windows"><span>Building native Windows libs</span></a></div>
-</div>
+</li>
+</ul>
 </div>
 </div>
 
@@ -214,23 +204,9 @@
                 <a href="../../index.html"
                    title="EJDB"
                    class="waves-effect waves-light btn"><i class="mdi-action-home"></i></a>
-                <a class="dropdown-button btn" href="#"
-                   data-beloworigin="true"
-                   data-activates="relnav-parents-2"><i class="mts-up"></i></a>
-                <ul id="relnav-parents-2"
-                    class="dropdown-content">
-                    <li><a href="index.html">Installation</a></li>
-                </ul> 
-                <a href="osx.html"
-                   title="OSX Installation"
-                   class="waves-effect waves-light btn">
-                    <i class="mts-left"></i>
-                </a>
-                <a href="archives.html"
-                   title="EJDB Binaries"
-                   class="waves-effect waves-light btn">
-                    <i class="mts-right"></i>
-                </a>
+                <a href="#toc-modal"
+                   title="EJDB"
+                   class="modal-trigger waves-effect waves-light btn"><i class="mts-list-1"></i></a> 
             </div>
             </div>
         </div>
