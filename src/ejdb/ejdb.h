@@ -353,6 +353,13 @@ EJDB_EXPORT EJQ* ejdbqueryhints(EJDB *jb, EJQ *q, const void *hintsbsdata);
 EJDB_EXPORT void ejdbquerydel(EJQ *q);
 
 /**
+ * Matches the query against a single bson object.
+ * @params q
+ * @params bs
+ */
+EJDB_EXPORT bool ejdbqrymatch(const EJQ *q, const bson *bs);
+
+/**
  * Set index for JSON field in EJDB collection.
  *
  *  - Available index types:

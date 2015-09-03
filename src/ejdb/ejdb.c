@@ -625,6 +625,17 @@ void ejdbquerydel(EJQ *q) {
     _qrydel(q, true);
 }
 
+bool ejdbqrymatch(const EJQ *q, const bson *bs) {
+    bool m = true;
+    const char *bsbuf = bson_data(bs);
+    int bsz = bson_size(bs);
+    int qsz = TCLISTNUM(q->qflist);
+    for(int i = 0; i < qsz && m; ++i) {
+        m = _qrybsmatch((EJQF*)(TCLISTVALPTR(q->qflist, i)), bsbuf, bsz);
+    }
+    return m;
+}
+
 /** Set index */
 bool ejdbsetindex(EJCOLL *coll, const char *fpath, int flags) {
     return _setindeximpl(coll, fpath, flags, false);
