@@ -3022,7 +3022,7 @@ static bool _qryupdate(_QRYCTX *ctx, void *bsbuf, int bsbufsz) {
         if (ctx->log) {
             char xoid[25];
             bson_oid_to_string(oid, xoid);
-            tcxstrprintf(ctx->log, "$DROPALL ON: %s\n", xoid);
+            tcxstrprintf(ctx->log, "$DROPALL: %s\n", xoid);
         }
         const void *olddata;
         int olddatasz = 0;
@@ -3393,6 +3393,7 @@ static bool _qryupdate(_QRYCTX *ctx, void *bsbuf, int bsbufsz) {
         _ejdbsetecode(coll->jb, JBEQUPDFAILED, __FILE__, __LINE__, __func__);
         goto finish;
     }
+
     oid = bson_iterator_oid(&it);
     rowm = tcmapnew2(TCMAPTINYBNUM);
     tcmapput(rowm, JDBCOLBSON, JDBCOLBSONL, bson_data(&bsout), bson_size(&bsout));
@@ -3400,6 +3401,12 @@ static bool _qryupdate(_QRYCTX *ctx, void *bsbuf, int bsbufsz) {
     if (rv) {
         rv = _updatebsonidx(coll, oid, &bsout, bsbuf, bsbufsz, ctx->didxctx);
     }
+
+    const char* bsoutbuf = bson_data(&bsout);
+    int bsoutsz = bson_size(&bsout);
+    tcxstrprintf(ctx->log, "$UPDATE: ");
+    for(int i=0;i<bsoutsz;++i) tcxstrprintf(ctx->log, "%02x", ((unsigned char *)bsoutbuf)[i]);
+    tcxstrprintf(ctx->log, "/%d\n", bsoutsz);
 
 finish:
     bson_destroy(&bsout);
@@ -4126,6 +4133,13 @@ finish:
                     if (!(q->flags & EJQONLYCOUNT) && (all || count > skip)) {
                         _pushprocessedbson(&ctx, bson_data(nbs), bson_size(nbs));
                     }
+
+                    const char* bsoutbuf = bson_data(nbs);
+                    int bsoutsz = bson_size(nbs);
+                    tcxstrprintf(log, "$UPSERT: ");
+                    for(int i=0;i<bsoutsz;++i) tcxstrprintf(log, "%02x", ((unsigned char *)bsoutbuf)[i]);
+                    tcxstrprintf(log, "/%d\n", bsoutsz);
+
                     bson_del(nbs);
                 }
                 break;
