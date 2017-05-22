@@ -1829,7 +1829,7 @@ static void _bson_fix_duplicate_keys(bson_iterator *it, bson *bso) {
             int ind = 0;
             int j = -1;
             while(++j < TCLISTNUM(dups)) {
-                buf = tclistval(dups, TCLISTNUM(dups) - 1, &bufsz);
+                buf = tclistval(dups, j, &bufsz);
                 memcpy(&itoff, buf, sizeof(itoff));
                 it2.cur = it->cur + itoff;
                 it2.first = itoff == 0 ? it->first : 0;
@@ -2178,6 +2178,13 @@ int bson_compare_fpaths(const void *bsdata1, const void *bsdata2, const char *fp
     return bson_compare_it_current(&it1, &it2);
 }
 
+static inline int bson_compare_type(bson_type t1, bson_type t2) {
+    if (t1 == BSON_EOO || BSON_IS_NULL_TYPE(t1)) {
+        return t2 == BSON_EOO || BSON_IS_NULL_TYPE(t2) ? 0 : -1;
+    }
+    return t1 - t2;
+}
+
 /**
  *
  * Return <0 if value pointing by it1 lesser than from it2.
@@ -2190,13 +2197,19 @@ int bson_compare_fpaths(const void *bsdata1, const void *bsdata2, const char *fp
 int bson_compare_it_current(const bson_iterator *it1, const bson_iterator *it2) {
     bson_type t1 = BSON_ITERATOR_TYPE(it1);
     bson_type t2 = BSON_ITERATOR_TYPE(it2);
+
+    if (bson_compare_type(t1, t2) > 0) {
+        return - bson_compare_it_current(it2, it1);
+    }
 	
 	if ((BSON_IS_STRING_TYPE(t1) && !BSON_IS_STRING_TYPE(t2)) ||
 		(BSON_IS_STRING_TYPE(t2) && !BSON_IS_STRING_TYPE(t1))) {
 		return (t1 - t2);		
 	}
-	
-    if (t1 == BSON_BOOL || t1 == BSON_EOO || t1 == BSON_NULL || t1 == BSON_UNDEFINED) {
+
+    if (BSON_IS_NULL_TYPE(t1)) {
+        return BSON_IS_NULL_TYPE(t2) ? 0 : -1;
+    } else if (t1 == BSON_BOOL || t1 == BSON_EOO) {
         int v1 = bson_iterator_bool(it1);
         int v2 = bson_iterator_bool(it2);
         return (v1 > v2) ? 1 : ((v1 < v2) ? -1 : 0);
